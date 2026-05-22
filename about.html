@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — WiseHold</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#0A0A0A;
+      color:#F5F5F5;
+      font-family:'Inter',sans-serif;
+      overflow-x:hidden;
+    }
+
+    ::selection{
+      background:#C6A972;
+      color:#0A0A0A;
+    }
+
+    .container{
+      width:90%;
+      max-width:1250px;
+      margin:auto;
+    }
+
+    nav{
+      position:fixed;
+      width:100%;
+      top:0;
+      z-index:1000;
+      backdrop-filter:blur(14px);
+      background:rgba(10,10,10,0.65);
+      border-bottom:1px solid rgba(255,255,255,0.05);
+    }
+
+    .nav-inner{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:28px 0;
+    }
+
+    .logo{
+      font-family:'Cormorant Garamond',serif;
+      font-size:32px;
+      letter-spacing:1px;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:36px;
+    }
+
+    .nav-links a{
+      text-decoration:none;
+      color:#8E8E93;
+      font-size:14px;
+      transition:0.3s ease;
+    }
+
+    .nav-links a:hover{
+      color:#F5F5F5;
+    }
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      position:relative;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      width:700px;
+      height:700px;
+      background:radial-gradient(circle, rgba(198,169,114,0.10), transparent 70%);
+      top:-220px;
+      right:-180px;
+      z-index:0;
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+      max-width:950px;
+    }
+
+    .eyebrow{
+      color:#C6A972;
+      font-size:13px;
+      letter-spacing:3px;
+      text-transform:uppercase;
+      margin-bottom:28px;
+    }
+
+    h1{
+      font-family:'Cormorant Garamond',serif;
+      font-size:clamp(72px,10vw,130px);
+      line-height:0.95;
+      font-weight:600;
+      letter-spacing:-3px;
+      margin-bottom:38px;
+    }
+
+    .hero-text{
+      font-size:24px;
+      line-height:1.9;
+      color:#D4D4D8;
+      max-width:860px;
+      font-weight:300;
+    }
+
+    section{
+      padding:140px 0;
+    }
+
+    .section-title{
+      font-family:'Cormorant Garamond',serif;
+      font-size:58px;
+      margin-bottom:30px;
+      letter-spacing:-1px;
+    }
+
+    .section-text{
+      color:#A1A1AA;
+      line-height:2;
+      max-width:900px;
+      font-size:17px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:32px;
+      margin-top:70px;
+    }
+
+    .card{
+      padding:42px;
+      border-radius:30px;
+      background:rgba(255,255,255,0.02);
+      border:1px solid rgba(255,255,255,0.06);
+      transition:0.35s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-6px);
+      border-color:rgba(198,169,114,0.18);
+    }
+
+    .card h3{
+      font-family:'Cormorant Garamond',serif;
+      font-size:32px;
+      margin-bottom:18px;
+    }
+
+    .card p{
+      color:#8E8E93;
+      line-height:1.9;
+      font-size:15px;
+    }
+
+    .quote-section{
+      text-align:center;
+      padding:180px 0;
+    }
+
+    .quote{
+      font-family:'Cormorant Garamond',serif;
+      font-size:clamp(42px,6vw,82px);
+      line-height:1.15;
+      max-width:1100px;
+      margin:auto;
+      letter-spacing:-2px;
+    }
+
+    .quote-small{
+      color:#71717A;
+      margin-top:40px;
+      font-size:16px;
+      line-height:1.9;
+      max-width:760px;
+      margin-left:auto;
+      margin-right:auto;
+    }
+
+    footer{
+      border-top:1px solid rgba(255,255,255,0.06);
+      padding:55px 0;
+    }
+
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:20px;
+    }
+
+    .footer-left{
+      color:#71717A;
+      font-size:14px;
+    }
+
+    .footer-links{
+      display:flex;
+      gap:28px;
+    }
+
+    .footer-links a{
+      color:#8E8E93;
+      text-decoration:none;
+      font-size:14px;
+      transition:0.3s ease;
+    }
+
+    .footer-links a:hover{
+      color:#F5F5F5;
+    }
+
+    @media(max-width:768px){
+
+      .nav-links{
+        display:none;
+      }
+
+      section{
+        padding:100px 0;
+      }
+
+      .quote-section{
+        padding:120px 0;
+      }
+
+      .hero-text{
+        font-size:20px;
+      }
+
+      .section-title{
+        font-size:44px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="container nav-inner">
+
+      <div class="logo">WiseHold</div>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="#">Research</a>
+        <a href="#">OnePager</a>
+        <a href="about.html">About</a>
+      </div>
+
+    </div>
+  </nav>
+
+  <section class="hero">
+
+    <div class="container hero-content">
+
+      <div class="eyebrow">
+        Philosophy • Research • Long-Term Thinking
+      </div>
+
+      <h1>About<br>WiseHold</h1>
+
+      <p class="hero-text">
+        WiseHold is being built as a long-term financial research and intelligence platform focused on investing, markets, capital allocation and institutional-quality thinking.
+      </p>
+
+    </div>
+
+  </section>
+
+  <section>
+
+    <div class="container">
+
+      <h2 class="section-title">
+        Why WiseHold Exists
+      </h2>
+
+      <p class="section-text">
+        Modern financial information is abundant, but clarity is increasingly rare. Markets today are driven by noise, short-term reactions and fragmented attention.
+        <br><br>
+        WiseHold is being built around a different philosophy — one centered on long-term orientation, disciplined research and thoughtful capital allocation.
+        <br><br>
+        The objective is not to produce more information, but to create systems that help identify signal, synthesize complexity and compound understanding over time.
+      </p>
+
+    </div>
+
+  </section>
+
+  <section>
+
+    <div class="container">
+
+      <h2 class="section-title">
+        Core Principles
+      </h2>
+
+      <div class="grid">
+
+        <div class="card">
+          <h3>Research First</h3>
+
+          <p>
+            Strong decisions are built on rigorous thinking, deep curiosity and structured analysis. Research remains the foundation of WiseHold.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Long-Term Orientation</h3>
+
+          <p>
+            Compounding requires patience, durability and rationality. WiseHold is being designed with a multi-decade mindset.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Institutional Discipline</h3>
+
+          <p>
+            Clarity of process, intellectual honesty and disciplined execution guide every layer of the platform being built.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section>
+
+    <div class="container">
+
+      <h2 class="section-title">
+        Long-Term Vision
+      </h2>
+
+      <p class="section-text">
+        Over time, WiseHold will evolve into an internet-native ecosystem for financial intelligence, market research and investment infrastructure.
+        <br><br>
+        The platform is intended to combine:
+        <br><br>
+        • institutional research systems  
+        <br>
+        • editorial finance publishing  
+        <br>
+        • automation-driven workflows  
+        <br>
+        • market intelligence infrastructure  
+        <br>
+        • long-form investment thinking  
+        <br><br>
+        into a modern and scalable research environment designed for serious learners, investors and operators.
+      </p>
+
+    </div>
+
+  </section>
+
+  <section class="quote-section">
+
+    <div class="container">
+
+      <div class="quote">
+        Building long-term systems for financial intelligence, investing and capital allocation.
+      </div>
+
+      <div class="quote-small">
+        WiseHold is a long-term project focused on thoughtful research, disciplined systems and modern financial infrastructure.
+      </div>
+
+    </div>
+
+  </section>
+
+  <footer>
+
+    <div class="container footer-inner">
+
+      <div class="footer-left">
+        © 2026 WiseHold. All rights reserved.
+      </div>
+
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="#">Research</a>
+        <a href="#">Newsletter</a>
+        <a href="mailto:contact@wisehold.in">Contact</a>
+      </div>
+
+    </div>
+
+  </footer>
+
+</body>
+</html>
