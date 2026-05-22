@@ -5,68 +5,492 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WiseHold</title>
 
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
   <style>
-    body {
+    * {
       margin: 0;
-      background: #0b0b0b;
-      color: #f5f5f5;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      padding: 24px;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #0A0A0A;
+      color: #F5F5F5;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: #C6A972;
+      color: #0A0A0A;
     }
 
     .container {
-      max-width: 700px;
+      width: 90%;
+      max-width: 1300px;
+      margin: auto;
+    }
+
+    nav {
+      width: 100%;
+      padding: 32px 0;
+      position: fixed;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      background: rgba(10,10,10,0.6);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      letter-spacing: 1px;
+      color: #F5F5F5;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #A1A1AA;
+      font-size: 14px;
+      transition: 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #F5F5F5;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(198,169,114,0.12), transparent 70%);
+      top: -250px;
+      right: -200px;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 850px;
+    }
+
+    .eyebrow {
+      color: #C6A972;
+      font-size: 14px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 30px;
     }
 
     h1 {
-      font-size: 56px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(72px, 11vw, 140px);
+      line-height: 0.95;
+      font-weight: 600;
+      margin-bottom: 32px;
+      letter-spacing: -3px;
+    }
+
+    .hero-subtitle {
+      font-size: 24px;
+      line-height: 1.7;
+      color: #D4D4D8;
+      max-width: 750px;
+      margin-bottom: 25px;
+      font-weight: 300;
+    }
+
+    .hero-small {
+      color: #71717A;
+      font-size: 15px;
+      line-height: 1.8;
+      max-width: 620px;
+      margin-bottom: 50px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      padding: 16px 32px;
+      background: #C6A972;
+      color: #0A0A0A;
+      text-decoration: none;
+      font-size: 14px;
+      border-radius: 999px;
+      transition: 0.35s ease;
+      font-weight: 500;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(198,169,114,0.18);
+    }
+
+    .btn-secondary {
+      padding: 16px 32px;
+      border: 1px solid rgba(255,255,255,0.12);
+      color: #F5F5F5;
+      text-decoration: none;
+      border-radius: 999px;
+      transition: 0.35s ease;
+      font-size: 14px;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.05);
+    }
+
+    section {
+      padding: 140px 0;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 58px;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+
+    .section-sub {
+      color: #71717A;
+      max-width: 700px;
+      line-height: 1.8;
+      margin-bottom: 80px;
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .pillar {
+      padding: 40px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.02);
+      border-radius: 28px;
+      transition: 0.35s ease;
+    }
+
+    .pillar:hover {
+      transform: translateY(-6px);
+      border-color: rgba(198,169,114,0.25);
+    }
+
+    .pillar h3 {
+      font-size: 24px;
       margin-bottom: 18px;
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .pillar p {
+      color: #8E8E93;
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
+
+    .research-card {
+      padding: 45px;
+      border-radius: 30px;
+      background: linear-gradient(
+        180deg,
+        rgba(255,255,255,0.03),
+        rgba(255,255,255,0.015)
+      );
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: 0.4s ease;
+    }
+
+    .research-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(198,169,114,0.22);
+    }
+
+    .research-card span {
+      color: #C6A972;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .research-card h3 {
+      font-size: 32px;
+      margin: 20px 0;
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .research-card p {
+      color: #8E8E93;
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    .vision {
+      text-align: center;
+      padding: 180px 0;
+    }
+
+    .vision h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(48px, 7vw, 90px);
+      line-height: 1.1;
+      margin-bottom: 35px;
       letter-spacing: -2px;
     }
 
-    p {
-      font-size: 18px;
-      line-height: 1.8;
-      color: #cfcfcf;
-    }
-
-    .email {
-      margin-top: 32px;
+    .vision p {
+      max-width: 820px;
+      margin: auto;
+      color: #8E8E93;
+      line-height: 1.9;
       font-size: 17px;
-      color: white;
     }
 
-    .footer {
-      margin-top: 40px;
-      color: #777;
+    footer {
+      padding: 60px 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-left {
+      color: #71717A;
       font-size: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .footer-links a {
+      color: #8E8E93;
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: #F5F5F5;
+    }
+
+    @media(max-width: 768px) {
+      nav {
+        padding: 22px 0;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero-subtitle {
+        font-size: 20px;
+      }
+
+      .section-title {
+        font-size: 42px;
+      }
+
+      section {
+        padding: 100px 0;
+      }
+
+      .vision {
+        padding: 120px 0;
+      }
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <h1>WiseHold</h1>
 
-    <p>
-      Long-term investing, valuation thinking and financial research.
-    </p>
+  <nav>
+    <div class="container nav-inner">
+      <div class="logo">WiseHold</div>
 
-    <p>
-      Building a disciplined framework around capital allocation and investing.
-    </p>
-
-    <div class="email">
-      shubham@wisehold.in
+      <div class="nav-links">
+        <a href="#">Research</a>
+        <a href="#">OnePager</a>
+        <a href="#">Philosophy</a>
+        <a href="#">Contact</a>
+      </div>
     </div>
+  </nav>
 
-    <div class="footer">
-      © WiseHold
+  <section class="hero">
+    <div class="container hero-content">
+
+      <div class="eyebrow">
+        Long-term Capital • Research • Financial Intelligence
+      </div>
+
+      <h1>WiseHold</h1>
+
+      <p class="hero-subtitle">
+        Research, capital allocation and institutional financial intelligence.
+      </p>
+
+      <p class="hero-small">
+        Building long-term systems for investing, markets, deal intelligence and modern research infrastructure.
+      </p>
+
+      <div class="buttons">
+        <a href="#" class="btn-primary">Explore Research</a>
+        <a href="#" class="btn-secondary">OnePager</a>
+      </div>
+
     </div>
-  </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <h2 class="section-title">Investment Philosophy</h2>
+
+      <p class="section-sub">
+        WiseHold is being built around disciplined thinking, long-term orientation and research-driven capital allocation. The objective is not information overload, but clarity, signal and intelligent synthesis.
+      </p>
+
+      <div class="pillars">
+
+        <div class="pillar">
+          <h3>Long-Term Orientation</h3>
+          <p>
+            Focused on durable thinking, asymmetric outcomes and compounding over extended periods of time.
+          </p>
+        </div>
+
+        <div class="pillar">
+          <h3>Research-First Thinking</h3>
+          <p>
+            Markets reward depth, patience and rigorous analysis. Research remains the foundation of every system being built.
+          </p>
+        </div>
+
+        <div class="pillar">
+          <h3>Institutional Discipline</h3>
+          <p>
+            Structured thinking, clarity of process and rational decision-making guide the long-term direction of WiseHold.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <h2 class="section-title">Research & Intelligence</h2>
+
+      <p class="section-sub">
+        Over time, WiseHold will evolve into an internet-native ecosystem for financial research, market intelligence and institutional-grade knowledge systems.
+      </p>
+
+      <div class="research-grid">
+
+        <div class="research-card">
+          <span>Newsletter</span>
+          <h3>OnePager</h3>
+          <p>
+            Concise market intelligence, deal commentary and high-signal financial insights designed for serious readers.
+          </p>
+        </div>
+
+        <div class="research-card">
+          <span>Markets</span>
+          <h3>Deal Intelligence</h3>
+          <p>
+            Coverage of mergers & acquisitions, capital markets, strategic finance and institutional transactions.
+          </p>
+        </div>
+
+        <div class="research-card">
+          <span>Research</span>
+          <h3>Investment Notes</h3>
+          <p>
+            Long-form research, market observations, valuation perspectives and investment frameworks.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section class="vision">
+    <div class="container">
+
+      <h2>
+        Building the infrastructure for long-term financial intelligence.
+      </h2>
+
+      <p>
+        WiseHold is evolving into a modern research and intelligence platform focused on markets, investing, capital allocation and institutional-grade financial systems. The objective is to combine disciplined research, automation and modern internet infrastructure into a long-term compounding knowledge ecosystem.
+      </p>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-inner">
+
+      <div class="footer-left">
+        © 2026 WiseHold. All rights reserved.
+      </div>
+
+      <div class="footer-links">
+        <a href="#">Research</a>
+        <a href="#">Newsletter</a>
+        <a href="#">LinkedIn</a>
+        <a href="mailto:contact@wisehold.in">Contact</a>
+      </div>
+
+    </div>
+  </footer>
+
 </body>
 </html>
