@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OnePager — WiseHold</title>
+
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      background:#050505;
+      color:#f5f5f5;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height:1.6;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .container{
+      width:90%;
+      max-width:1200px;
+      margin:auto;
+    }
+
+    header{
+      border-bottom:1px solid rgba(255,255,255,0.06);
+      position:sticky;
+      top:0;
+      backdrop-filter: blur(12px);
+      background:rgba(5,5,5,0.85);
+      z-index:1000;
+    }
+
+    nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:24px 0;
+    }
+
+    .logo{
+      font-size:28px;
+      font-family: Georgia, serif;
+      color:#f5f5f5;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:36px;
+      font-size:14px;
+      color:#b0b0b0;
+    }
+
+    .hero{
+      padding:120px 0 80px;
+    }
+
+    .tag{
+      color:#c7a86d;
+      letter-spacing:2px;
+      font-size:12px;
+      margin-bottom:24px;
+      text-transform:uppercase;
+    }
+
+    h1{
+      font-size:72px;
+      line-height:1;
+      font-family: Georgia, serif;
+      margin-bottom:28px;
+      font-weight:400;
+    }
+
+    .hero-text{
+      max-width:700px;
+      color:#9a9a9a;
+      font-size:20px;
+    }
+
+    .issues{
+      padding:40px 0 120px;
+    }
+
+    .issue-card{
+      border:1px solid rgba(255,255,255,0.06);
+      border-radius:24px;
+      padding:40px;
+      margin-bottom:28px;
+      transition:0.3s ease;
+      background:rgba(255,255,255,0.015);
+    }
+
+    .issue-card:hover{
+      transform:translateY(-4px);
+      border-color:rgba(199,168,109,0.35);
+    }
+
+    .issue-date{
+      color:#c7a86d;
+      font-size:12px;
+      letter-spacing:2px;
+      margin-bottom:18px;
+      text-transform:uppercase;
+    }
+
+    .issue-title{
+      font-size:36px;
+      font-family: Georgia, serif;
+      margin-bottom:18px;
+    }
+
+    .issue-desc{
+      color:#9a9a9a;
+      max-width:700px;
+    }
+
+    footer{
+      border-top:1px solid rgba(255,255,255,0.06);
+      padding:40px 0;
+      color:#777;
+      font-size:14px;
+    }
+
+    @media(max-width:768px){
+
+      h1{
+        font-size:48px;
+      }
+
+      .issue-title{
+        font-size:28px;
+      }
+
+      .nav-links{
+        gap:18px;
+        font-size:12px;
+      }
+
+    }
+
+  </style>
+</head>
+<body>
+
+<header>
+
+  <div class="container">
+
+    <nav>
+
+      <a href="index.html" class="logo">WiseHold</a>
+
+      <div class="nav-links">
+        <a href="onepager.html">OnePager</a>
+        <a href="duo.html">DUO</a>
+        <a href="vector.html">Vector</a>
+        <a href="about.html">About</a>
+      </div>
+
+    </nav>
+
+  </div>
+
+</header>
+
+<section class="hero">
+
+  <div class="container">
+
+    <div class="tag">
+      DAILY INTELLIGENCE
+    </div>
+
+    <h1>OnePager</h1>
+
+    <p class="hero-text">
+      Concise institutional market intelligence focused on signal, clarity and long-term financial thinking.
+    </p>
+
+  </div>
+
+</section>
+
+<section class="issues">
+
+  <div class="container">
+
+    <div class="issue-card">
+
+      <div class="issue-date">
+        ISSUE 001 • MAY 2026
+      </div>
+
+      <div class="issue-title">
+        Markets, liquidity and the return of disciplined capital.
+      </div>
+
+      <div class="issue-desc">
+        Early observations on market liquidity, valuation discipline, institutional positioning and capital allocation trends shaping the current environment.
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<footer>
+
+  <div class="container">
+    © 2026 WiseHold. All rights reserved.
+  </div>
+
+</footer>
+
+</body>
+</html>
